@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngjpa <youngjpa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:07:34 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/07 17:47:17 by youngjpa         ###   ########.fr       */
+/*   Updated: 2023/04/07 18:03:55 by yuhyeongmin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ typedef struct s_info_env
 void		*ft_free(void *ptr);
 t_cmd_info	*ft_cmd_init(void);
 void		ft_free_list(t_cmd_info *cmd);
-
+t_info_env	*compare_env_key(t_info_env *env_head, char *key);
+void print_checker(t_cmd_info *cmd);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);
