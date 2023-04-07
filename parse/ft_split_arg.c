@@ -6,7 +6,7 @@
 /*   By: youngjpa <youngjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:51:31 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/07 15:50:41 by youngjpa         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:28:54 by youngjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static char	**set_worddup(char const *s, char c, char **mem)
 	return (mem);
 }
 
-char	**ft_split_argc(char const *s, char c, int *argc)
+char	**ft_split_arg(char const *s, char c, int *argc)
 {
 	char	**new_mem;
 
@@ -84,11 +84,6 @@ char	**ft_split_argc(char const *s, char c, int *argc)
 		return (NULL);
 	*argc = get_word_cnt(s, c);
 	new_mem = (char **)malloc(sizeof(char *) * (*argc + 1));
-	// int i = 0;
-	// while (i < *argc)
-	// {
-	// 	printf("%s\n", )
-	// }
 	if (!new_mem)
 		return (NULL);
 	new_mem = set_worddup(s, c, new_mem);

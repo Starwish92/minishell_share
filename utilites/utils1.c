@@ -6,7 +6,7 @@
 /*   By: youngjpa <youngjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:57:38 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/07 15:47:32 by youngjpa         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:45:56 by youngjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	ft_atoi(const char *str)
 int	ft_isalpha(int c)
 {
 	return (('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z'));
-	// return (('A' <= c && c <= 'Z'));
 }
 
 int	ft_isdigit(int c)

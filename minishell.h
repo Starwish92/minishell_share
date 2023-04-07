@@ -6,7 +6,7 @@
 /*   By: youngjpa <youngjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:07:34 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/07 15:50:38 by youngjpa         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:47:17 by youngjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,36 +33,32 @@
 # define DFL 1
 # define IGN 2
 
-int	g_exit_signal_code; //$? == 오류코드 위해서
+int	g_exit_signal_code; 
 
-typedef struct s_cmd_info //s_cmd_info
+typedef struct s_cmd_info 
 {
-	char				**cmd_and_av; //cmd_and_av
-	// 커멘드랑 알규먼트 같이 가지고 있음, 파이프 기준으로 엑스큐트에 넘김
-	// echo -n 42 | cat -e 
-	// echo, -n, 42 
-	// cat, -e
-	int					ac; //ac
-	bool				ft_pipe_flag; //ft_pipe_flag
-	bool				ft_dollar_flag; //ft_dollar_flag
-	int					fd[2]; //fd
-	int					ft_in_files; //ft_in_files
-	int					ft_out_files; //ft_out_files
-	char				*ft_command_path; //ft_command_path
-	struct s_cmd_info	*prev; //prev
-	struct s_cmd_info	*next; //next
-}						t_cmd_info; //t_cmd_info
+	char				**cmd_and_av; 
+	int					ac; 
+	bool				ft_pipe_flag; 
+	bool				ft_dollar_flag; 
+	int					fd[2]; 
+	int					ft_in_files; 
+	int					ft_out_files; 
+	char				*ft_command_path; 
+	struct s_cmd_info	*prev; 
+	struct s_cmd_info	*next; 
+}						t_cmd_info; 
 
-typedef struct s_info_env //s_info_env
+typedef struct s_info_env 
 {
-	char			*key; //env_key
-	char			*value; //env_val
-	struct s_info_env	*next; //next
-	struct s_info_env	*prev; //prev
-}	t_info_env; //t_info_env
+	char			*key; 
+	char			*value; 
+	struct s_info_env	*next; 
+	struct s_info_env	*prev; 
+}	t_info_env; 
 
-void		*ft_frees(void *ptr);
-t_cmd_info	*ft_list_init(void);
+void		*ft_free(void *ptr);
+t_cmd_info	*ft_cmd_init(void);
 void		ft_free_list(t_cmd_info *cmd);
 
 int			ft_isalpha(int c);
@@ -92,42 +88,41 @@ void		ft_execve(const char *file, char *const *argv, char *const *envp);
 char		*ft_getcwd(char *buf, size_t size);
 
 int			is_exist_file(char *tmp_file_name);
-void		exit_with_err(char *str1, char *str2, int exit_code);
-void		print_err3(char *cmd, char *str1, char *str2);
+void		exit_errno(char *str1, char *str2, int exit_code);
 void		print_quote_err3(char *cmd, char *str1, char *str2);
-void		print_err(char *str);
+void		print_err1(char *str);
 void		print_err2(char *str1, char *str2);
+void		print_err3(char *cmd, char *str1, char *str2);
 
 void		set_signal(int sig_int, int sig_quit);
 
-int			is_whitespace(char *line);
-void		main_init(int argc, char *argv[]);
-int			main(int argc, char *argv[], char *envp[]);
+int			ft_str_isspace(char *str);
+void		ft_main_init(int argc, char **argv);
 static void	first(t_cmd_info *tmp, t_cmd_info **ptr, t_cmd_info **head);
-void		argc_checker(t_cmd_info **cmd);
+void		ft_arg_check(t_cmd_info **cmd);
 
 static void	*is_free(char **str, int str_index);
 static int	get_word_cnt(char const *str, char c);
 static char	**set_worddup(char const *s, char c, char **mem);
-char		**ft_split_argc(char const *s, char c, int *argc);
+char		**ft_split_arg(char const *s, char c, int *argc);
 
-char		*ft_strjoin_char(char *s1, char s2);
+char		*ft_join_ascii(char *s1, char s2);
 
-static char	*parse_in_pipe(char *str, int *pipe, t_cmd_info **cmd, t_cmd_info *next);
+static char	*in_pipe(char *str, int *ch_pipe, t_cmd_info **cmd, t_cmd_info *next);
 static char	*add_redirect_space(char *str, char *line, char c);
-static char	*parse_out_pipe(char *str, char *line, int quotes, int *pipe);
-void		parse(char *line, t_cmd_info *cmd);
+static char	*out_pipe(char *str, char *line, int ch_quote, int *ch_pipe);
+void		ft_parse(char *input, t_cmd_info *cmd);
 
-int			parse_set_quotes(char line, int quotes, t_cmd_info *cmd);
+int			set_quotes(char str, int ch_quotes, t_cmd_info *cmd);
 char		*ft_strjoin_free(char *s1, char *s2);
-void		delete_argv(t_cmd_info *cmd, int *i);
-void		argv_change(t_cmd_info *cmd, char *new, int i);
+void		ft_del_argv(t_cmd_info *cmd, int *i);
+void		ft_change_argv(t_cmd_info *cmd, char *new, int i);
 
-static char	*replace_while_dollar(char str, char *new, t_info_env *head, int quotes);
-static char	*replace_while_else(char c, char *new, int quotes);
+static char	*ft_tokenize_while_dollar(char str, char *new, t_info_env *head, int quotes);
+static char	*ft_tokenize_while_else(char c, char *new, int quotes);
 static int	dollar_check(char c);
-static char	*replace_while(t_cmd_info *cmd, t_info_env *head, int i);
-void		replace(t_cmd_info *cmd, t_info_env *head);
+static char	*ft_tokenize_while(t_cmd_info *cmd, t_info_env *head, int i);
+void		ft_tokenize(t_cmd_info *cmd, t_info_env *head);
 
 
 #endif
