@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hyyoo <hyyoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:57:38 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/07 18:02:31 by yuhyeongmin      ###   ########.fr       */
+/*   Updated: 2023/04/08 15:18:04 by hyyoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ int	ft_atoi(const char *str)
 			return ((sign + 1) / -2);
 	}
 	return (sign * ret);
+}
+
+int	ft_str_isspace(char *str)
+{
+	while (*str)
+	{
+		if (*str != 32 && !(*str >= 9 && *str <= 13))
+		{
+			return (0);
+		}
+		str++;
+	}
+	return (1);
 }
 
 int	ft_isalpha(int c)

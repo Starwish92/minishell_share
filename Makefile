@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+         #
+#    By: hyyoo <hyyoo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 13:03:55 by youngjpa          #+#    #+#              #
-#    Updated: 2023/04/07 18:19:06 by yuhyeongmin      ###   ########.fr        #
+#    Updated: 2023/04/08 15:24:09 by hyyoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS		=	minishell.c				 \
 				./utilites/utils3.c \
 				./utilites/utils4.c \
 				./utilites/utils5.c \
+				./env/env_utils.c	\
 
 OBJS		= $(SRCS:%.c=%.o)
 
