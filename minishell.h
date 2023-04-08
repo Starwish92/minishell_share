@@ -6,7 +6,7 @@
 /*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:07:34 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/07 18:03:55 by yuhyeongmin      ###   ########.fr       */
+/*   Updated: 2023/04/08 15:27:37 by yuhyeongmin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,11 @@ static int	dollar_check(char c);
 static char	*ft_tokenize_while(t_cmd_info *cmd, t_info_env *head, int i);
 void		ft_tokenize(t_cmd_info *cmd, t_info_env *head);
 
+int	ft_env_init(t_info_env *cur, char **envp);
+t_info_env	*new_env(char *key_value);
+t_info_env	*compare_env_key(t_info_env *env_head, char *key);
+char	*get_env_value(char *key_value);
+char	*get_env_key(char *key_value);
 
 #endif
 
