@@ -6,7 +6,7 @@
 /*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 15:16:32 by hyyoo             #+#    #+#             */
-/*   Updated: 2023/04/08 15:27:50 by yuhyeongmin      ###   ########.fr       */
+/*   Updated: 2023/04/08 15:29:37 by yuhyeongmin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_info_env	*compare_env_key(t_info_env *env_head, char *key)
 
 	temp = env_head;
 	// while (cur->key != 0 && ft_strncmp(key, cur->key, ft_strlen(cur->key)))
-	while (temp->key != 0 && ft_strncmp(key, temp->key, ft_strlen(key)))
+	while (temp->env_key != 0 && ft_strncmp(key, temp->env_key, ft_strlen(key)))
 	{
         temp = temp->next;
     }
@@ -87,16 +87,16 @@ t_info_env	*new_env(char *key_value)
 	{
 		temp->next = NULL;
 		temp->prev = NULL;
-		temp->value = NULL;
-		temp->key = NULL;
+		temp->env_val = NULL;
+		temp->env_key = NULL;
 	}
 	else
 	{
-		temp->key = get_env_key(key_value);
-		if (temp->key == NULL)
+		temp->env_key = get_env_key(key_value);
+		if (temp->env_key == NULL)
 			return (NULL);
-		temp->value = get_env_value(key_value);
-		if (temp->value == NULL)
+		temp->env_val = get_env_value(key_value);
+		if (temp->env_val == NULL)
 			return (NULL);
 		temp->next = NULL;
 		temp->prev = NULL;
@@ -110,11 +110,11 @@ int	ft_env_init(t_info_env *cur, char **envp)
 	t_info_env	*temp;
 
 	i = 0;
-	cur->key = get_env_key(envp[1]);
-	if (cur->key == NULL)
+	cur->env_key = get_env_key(envp[1]);
+	if (cur->env_key == NULL)
 		return (-1);
-	cur->value = get_env_value(envp[1]);
-	if (cur->value == NULL)
+	cur->env_val = get_env_value(envp[1]);
+	if (cur->env_val == NULL)
 		return (-1);
 	cur->next = 0;
 	cur->prev = 0;

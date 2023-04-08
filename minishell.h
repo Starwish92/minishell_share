@@ -6,7 +6,7 @@
 /*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:07:34 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/08 15:27:37 by yuhyeongmin      ###   ########.fr       */
+/*   Updated: 2023/04/08 15:29:37 by yuhyeongmin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ typedef struct s_cmd_info
 
 typedef struct s_info_env 
 {
-	char			*key; 
-	char			*value; 
+	char			*env_key; 
+	char			*env_val; 
 	struct s_info_env	*next; 
 	struct s_info_env	*prev; 
 }	t_info_env; 
