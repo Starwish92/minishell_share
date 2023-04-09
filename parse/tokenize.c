@@ -12,29 +12,19 @@
 
 #include "../minishell.h"
 
-// t_info_env	*compare_env_key(t_info_env *env_head, char *key)
-// {
-// 	t_info_env	*cur;
-
-// 	cur = env_head;
-// 	// while (cur->key != 0 && ft_strncmp(key, cur->key, ft_strlen(cur->key)))
-// 	while (cur->key != 0 && ft_strncmp(key, cur->key, ft_strlen(key)))
-// 		cur = cur->next;
-// 	return (cur);
-// }
-
 char	*ft_getenv(t_info_env *env_head, char *key)
 {
 	t_info_env	*cur;
 
 	cur = compare_env_key(env_head, key);
 	return (cur->env_val);
-}
+}//이동필요
 
 static char	*ft_tokenize_while_dollar(char str, char *new, t_info_env *head, int quotes)
 {
-	static char	*env = NULL; 
+	static char	*env;
 
+	env = NULL;
 	if (ft_isalnum(str) || str == '_')
 		env = ft_join_ascii(env, str);
 	else if (str == '?' && env == NULL) 
@@ -50,8 +40,6 @@ static char	*ft_tokenize_while_dollar(char str, char *new, t_info_env *head, int
 			new = ft_strjoin_free(new, ft_getenv(head, env));
 			if (!(str == '\"' && quotes != 1) && !(str == '\'' && quotes != 2))
 				new = ft_join_ascii(new, str);
-			
-			
 			env = ft_free(env);
 			g_exit_signal_code = 0; 
 		}
@@ -69,13 +57,9 @@ static char	*ft_tokenize_while_else(char c, char *new, int quotes)
 	if (c == -32)
 		ret = ft_join_ascii(new, ' ');
 	else if (!(c == '\"' && quotes != 1) && !(c == '\'' && quotes != 2)) 
-	{
 		ret = ft_join_ascii(new, c);
-	}
 	else
-	{
 		return (new);
-	}
 	return (ret);
 }
 
@@ -89,15 +73,15 @@ static int	dollar_check(char c)
 
 static char	*ft_tokenize_while(t_cmd_info *cmd, t_info_env *head, int i)
 {
-	int		j;
 	char	*new;
-	int		ch_dollar;
+	int		j;
 	int		ch_quote;
+	int		ch_dollar;
 
+	new = NULL;
+	j = 0;
 	ch_quote = 0;
 	ch_dollar = 0;
-	j = 0;
-	new = NULL;
 	while (j <= (int)ft_strlen(cmd->cmd_and_av[i])) 
 	{
 		ch_quote = set_quotes(cmd->cmd_and_av[i][j], ch_quote, cmd); 

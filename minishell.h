@@ -51,8 +51,8 @@ typedef struct s_cmd_info
 
 typedef struct s_info_env 
 {
-	char			*env_key; 
-	char			*env_val; 
+	char				*env_key; 
+	char				*env_val; 
 	struct s_info_env	*next; 
 	struct s_info_env	*prev; 
 }	t_info_env; 
@@ -110,8 +110,8 @@ char		**ft_split_arg(char const *s, char c, int *argc);
 char		*ft_join_ascii(char *s1, char s2);
 
 static char	*in_pipe(char *str, int *ch_pipe, t_cmd_info **cmd, t_cmd_info *next);
-static char	*add_redirect_space(char *str, char *line, char c);
-static char	*out_pipe(char *str, char *line, int ch_quote, int *ch_pipe);
+static char	*add_redirect_space(char *str, char *input, char c);
+static char	*out_pipe(char *str, int *ch_pipe, char *input, int ch_quote);
 void		ft_parse(char *input, t_cmd_info *cmd);
 
 int			set_quotes(char str, int ch_quotes, t_cmd_info *cmd);

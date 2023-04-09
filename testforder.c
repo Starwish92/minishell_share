@@ -1,7 +1,5 @@
 #include "minishell.h"
 
-
-
 void print_checker(t_cmd_info *cmd)
 {
 	t_cmd_info	*cur;

@@ -29,21 +29,21 @@ static void	*is_free(char **str, int str_index)
 static int	get_word_cnt(char const *str, char c)
 {
 	size_t	count;
-	int		chker;
+	int		checker;
 
 	count = 0;
-	chker = 1;
+	checker = 1;
 	while (*str != '\0' && *str == c)
 		str++;
 	while (*str)
 	{
-		if (chker == 1 && *str != c)
+		if (checker == 1 && *str != c)
 		{
 			count++;
-			chker = 0;
+			checker = 0;
 		}
 		if (*str == c)
-			chker = 1;
+			checker = 1;
 		str++;
 	}
 	return (count);
@@ -79,9 +79,9 @@ char	**ft_split_arg(char const *s, char c, int *argc)
 {
 	char	**new_mem;
 
-	new_mem = NULL;
 	if (!s)
 		return (NULL);
+	new_mem = NULL;
 	*argc = get_word_cnt(s, c);
 	new_mem = (char **)malloc(sizeof(char *) * (*argc + 1));
 	if (!new_mem)

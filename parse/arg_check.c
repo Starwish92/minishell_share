@@ -27,8 +27,8 @@ void	ft_arg_check(t_cmd_info **cmd)
 	t_cmd_info	*cur;
 	t_cmd_info	*temp;
 
-	temp = NULL;
 	cur = *cmd;
+	temp = NULL;
 	while (cur)
 	{
 		if (cur->prev == NULL && cur->next == NULL)
