@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: shane <shane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:54:59 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/08 15:29:37 by yuhyeongmin      ###   ########.fr       */
+/*   Updated: 2023/04/10 11:38:46 by shane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-char	*ft_getenv(t_info_env *env_head, char *key)
-{
-	t_info_env	*cur;
-
-	cur = compare_env_key(env_head, key);
-	return (cur->env_val);
-}//이동필요
 
 static char	*ft_tokenize_while_dollar(char str, char *new, t_info_env *head, int quotes)
 {

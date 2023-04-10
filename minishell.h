@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: shane <shane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:07:34 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/08 15:29:37 by yuhyeongmin      ###   ########.fr       */
+/*   Updated: 2023/04/10 11:36:16 by shane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,12 @@ typedef struct s_info_env
 	struct s_info_env	*prev; 
 }	t_info_env; 
 
+void 		print_checker(t_cmd_info *cmd);
+
 void		*ft_free(void *ptr);
 t_cmd_info	*ft_cmd_init(void);
 void		ft_free_list(t_cmd_info *cmd);
 t_info_env	*compare_env_key(t_info_env *env_head, char *key);
-void print_checker(t_cmd_info *cmd);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);
@@ -76,17 +77,18 @@ size_t		ft_strlcpy(char *dest, const char *src, size_t destsize);
 char		*ft_strdup(const char *s1);
 void		ft_putstr_fd(char *s, int fd);
 int			ft_isspace(char c);
-char		*ft_strchr(const char *s, int c);
 
-int			ft_open(char *fname, int oflag, int mode);
-int			ft_close(int fd);
-void		ft_dup2(int fd1, int fd2);
-void		ft_pipe(int *fds);
-pid_t		ft_fork(void);
+// char		*ft_strchr(const char *s, int c);
+
+// int			ft_open(char *fname, int oflag, int mode);
+// int			ft_close(int fd);
+// void		ft_dup2(int fd1, int fd2);
+// void		ft_pipe(int *fds);
+// pid_t		ft_fork(void);
 void		*ft_malloc(size_t size, size_t n);
-int			ft_write(int fd, const void *buf, size_t byte);
-void		ft_execve(const char *file, char *const *argv, char *const *envp);
-char		*ft_getcwd(char *buf, size_t size);
+// int			ft_write(int fd, const void *buf, size_t byte);
+// void		ft_execve(const char *file, char *const *argv, char *const *envp);
+// char		*ft_getcwd(char *buf, size_t size);
 
 int			is_exist_file(char *tmp_file_name);
 void		exit_errno(char *str1, char *str2, int exit_code);
@@ -125,11 +127,14 @@ static int	dollar_check(char c);
 static char	*ft_tokenize_while(t_cmd_info *cmd, t_info_env *head, int i);
 void		ft_tokenize(t_cmd_info *cmd, t_info_env *head);
 
-int	ft_env_init(t_info_env *cur, char **envp);
+int			ft_env_init(t_info_env *cur, char **envp);
 t_info_env	*new_env(char *key_value);
 t_info_env	*compare_env_key(t_info_env *env_head, char *key);
-char	*get_env_value(char *key_value);
-char	*get_env_key(char *key_value);
+char		*get_env_value(char *key_value);
+char		*get_env_key(char *key_value);
+
+char	*ft_getenv(t_info_env *env_head, char *key);
+
 
 #endif
 
