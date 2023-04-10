@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyyoo <hyyoo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:03:41 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/08 15:18:08 by hyyoo            ###   ########.fr       */
+/*   Updated: 2023/04/10 19:46:30 by yuhyeongmin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int argc, char **argv, char **envp)
 			ft_parse(input, cmd);
 			ft_tokenize(cmd, &info_env);
 			ft_arg_check(&cmd);
-			print_checker(cmd);
+			print_checker(cmd, &info_env);
 			ft_free_list(cmd);
 		}
 		free(input);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shane <shane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:07:34 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/10 11:36:16 by shane            ###   ########.fr       */
+/*   Updated: 2023/04/10 13:44:40 by yuhyeongmin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_info_env
 	struct s_info_env	*prev; 
 }	t_info_env; 
 
-void 		print_checker(t_cmd_info *cmd);
+void 		print_checker(t_cmd_info *cmd, t_info_env *env);
 
 void		*ft_free(void *ptr);
 t_cmd_info	*ft_cmd_init(void);
