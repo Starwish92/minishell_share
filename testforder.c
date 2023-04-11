@@ -1,9 +1,9 @@
 #include "minishell.h"
 
-void print_checker(t_cmd_info *cmd, t_info_env *env)
+void print_checker(t_cmd_info *cmd, t_env_info *env)
 {
 	t_cmd_info	*cur;
-	t_info_env 	*env_cur;
+	t_env_info 	*env_cur;
 	int			i;
 	
 	cur = cmd;

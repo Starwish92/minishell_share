@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: shane <shane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:07:34 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/10 13:44:40 by yuhyeongmin      ###   ########.fr       */
+/*   Updated: 2023/04/11 14:29:04 by shane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,36 +33,36 @@
 # define DFL 1
 # define IGN 2
 
-int	g_exit_signal_code; 
+int	g_exit_signal_code;
 
-typedef struct s_cmd_info 
+typedef struct s_cmd_info
 {
-	char				**cmd_and_av; 
-	int					ac; 
-	bool				ft_pipe_flag; 
-	bool				ft_dollar_flag; 
-	int					fd[2]; 
-	int					ft_in_files; 
-	int					ft_out_files; 
-	char				*ft_command_path; 
-	struct s_cmd_info	*prev; 
-	struct s_cmd_info	*next; 
-}						t_cmd_info; 
+	char				**cmd_and_av;
+	int					ac;
+	bool				ft_pipe_flag;
+	bool				ft_dollar_flag;
+	int					fd[2];
+	int					ft_in_files;
+	int					ft_out_files;
+	char				*ft_command_path;
+	struct s_cmd_info	*prev;
+	struct s_cmd_info	*next;
+}			t_cmd_info;
 
-typedef struct s_info_env 
+typedef struct s_env_info
 {
-	char				*env_key; 
-	char				*env_val; 
-	struct s_info_env	*next; 
-	struct s_info_env	*prev; 
-}	t_info_env; 
+	char				*env_key;
+	char				*env_val;
+	struct s_env_info	*next;
+	struct s_env_info	*prev;
+}	t_env_info; 
 
-void 		print_checker(t_cmd_info *cmd, t_info_env *env);
+void		print_checker(t_cmd_info *cmd, t_env_info *env);
 
 void		*ft_free(void *ptr);
 t_cmd_info	*ft_cmd_init(void);
 void		ft_free_list(t_cmd_info *cmd);
-t_info_env	*compare_env_key(t_info_env *env_head, char *key);
+t_env_info	*compare_env_key(t_env_info *env_head, char *key);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);
@@ -121,19 +121,27 @@ char		*ft_strjoin_free(char *s1, char *s2);
 void		ft_del_argv(t_cmd_info *cmd, int *i);
 void		ft_change_argv(t_cmd_info *cmd, char *new, int i);
 
-static char	*ft_tokenize_while_dollar(char str, char *new, t_info_env *head, int quotes);
+static char	*ft_tokenize_while_dollar(char str, char *new, t_env_info *head, int quotes);
 static char	*ft_tokenize_while_else(char c, char *new, int quotes);
 static int	dollar_check(char c);
-static char	*ft_tokenize_while(t_cmd_info *cmd, t_info_env *head, int i);
-void		ft_tokenize(t_cmd_info *cmd, t_info_env *head);
+static char	*ft_tokenize_while(t_cmd_info *cmd, t_env_info *head, int i);
+void		ft_tokenize(t_cmd_info *cmd, t_env_info *head);
 
-int			ft_env_init(t_info_env *cur, char **envp);
-t_info_env	*new_env(char *key_value);
-t_info_env	*compare_env_key(t_info_env *env_head, char *key);
+int			ft_env_init(t_env_info *cur, char **envp);
+t_env_info	*new_env(char *key_value);
+t_env_info	*compare_env_key(t_env_info *env_head, char *key);
 char		*get_env_value(char *key_value);
 char		*get_env_key(char *key_value);
 
-char	*ft_getenv(t_info_env *env_head, char *key);
+char	*ft_getenv(t_env_info *env_head, char *key);
+
+void	execute(t_cmd_info *cmd_head, t_env_info *env_head);
+
+static char	**get_envp(t_env_info *head);
+static int	os_builtins(t_cmd_info *cmd, t_env_info *env_head);
+static int	execute_cmd(t_cmd_info *cmd, t_env_info *env_head);
+static void	do_fork_cmd(t_cmd_info *cmd, t_env_info *env_head);
+static void	do_cmd(t_cmd_info *cmd, t_env_info *env_head);
 
 
 #endif
