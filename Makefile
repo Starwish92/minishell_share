@@ -6,7 +6,7 @@
 #    By: shane <shane@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 13:03:55 by youngjpa          #+#    #+#              #
-#    Updated: 2023/04/11 18:23:37 by shane            ###   ########.fr        #
+#    Updated: 2023/04/11 20:07:38 by shane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,11 +38,11 @@ SRCS		=	minishell.c				 \
 
 OBJS		= $(SRCS:%.c=%.o)
 
+SAN = -fsanitize=address -g3
+DEBUG = -g
 CC = gcc $(DEBUG) $(SAN)
 CFLAGS = 
 #-Werror -Wall -Wextra
-SAN = -fsanitize=address -g3
-DEBUG = -g
 READLINE_LIB 	= -lreadline -L/opt/homebrew/opt/readline/lib
 READLINE_INC	= -I/opt/homebrew/opt/readline/include
 # READLINE_LIB 	= -lreadline -L${HOME}/.brew/opt/readline/lib
