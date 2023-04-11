@@ -6,7 +6,7 @@
 #    By: shane <shane@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 13:03:55 by youngjpa          #+#    #+#              #
-#    Updated: 2023/04/11 14:30:26 by shane            ###   ########.fr        #
+#    Updated: 2023/04/11 18:23:37 by shane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,15 +33,15 @@ SRCS		=	minishell.c				 \
 				./utilites/utils5.c \
 				./env/env_utils.c	\
 				./env/env_utils2.c	\
-				./execute/execute.c	\
+				# ./execute/execute.c	\
 				
 
 OBJS		= $(SRCS:%.c=%.o)
 
-CC = gcc $(DEBUG)
+CC = gcc $(DEBUG) $(SAN)
 CFLAGS = 
 #-Werror -Wall -Wextra
-# SAN = -fsanitize=address -g3
+SAN = -fsanitize=address -g3
 DEBUG = -g
 READLINE_LIB 	= -lreadline -L/opt/homebrew/opt/readline/lib
 READLINE_INC	= -I/opt/homebrew/opt/readline/include

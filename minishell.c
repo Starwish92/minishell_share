@@ -6,7 +6,7 @@
 /*   By: shane <shane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:03:41 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/11 14:02:51 by shane            ###   ########.fr       */
+/*   Updated: 2023/04/11 16:56:14 by shane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int	main(int argc, char **argv, char **envp)
 			ft_parse(input, cmd);
 			ft_tokenize(cmd, &info_env);
 			ft_arg_check(&cmd);
-			execute(cmd, &info_env);
-			// print_checker(cmd, &info_env);
+			// execute(cmd, &info_env);
+			print_checker(cmd, &info_env);
 			ft_free_list(cmd);
 		}
 		free(input);

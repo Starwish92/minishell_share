@@ -6,7 +6,7 @@
 /*   By: shane <shane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:07:34 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/11 14:29:04 by shane            ###   ########.fr       */
+/*   Updated: 2023/04/11 16:55:35 by shane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,11 +137,11 @@ char	*ft_getenv(t_env_info *env_head, char *key);
 
 void	execute(t_cmd_info *cmd_head, t_env_info *env_head);
 
-static char	**get_envp(t_env_info *head);
-static int	os_builtins(t_cmd_info *cmd, t_env_info *env_head);
-static int	execute_cmd(t_cmd_info *cmd, t_env_info *env_head);
-static void	do_fork_cmd(t_cmd_info *cmd, t_env_info *env_head);
-static void	do_cmd(t_cmd_info *cmd, t_env_info *env_head);
+// static char	**get_envp(t_env_info *head);
+// static int	os_builtins(t_cmd_info *cmd, t_env_info *env_head);
+// static int	execute_cmd(t_cmd_info *cmd, t_env_info *env_head);
+// static void	do_fork_cmd(t_cmd_info *cmd, t_env_info *env_head);
+// static void	do_cmd(t_cmd_info *cmd, t_env_info *env_head);
 
 
 #endif
