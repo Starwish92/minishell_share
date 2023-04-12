@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngjpa <youngjpa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:07:34 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/12 14:41:58 by youngjpa         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:23:59 by yuhyeongmin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,17 @@ char		*ft_strdup(const char *s1);
 void		ft_putstr_fd(char *s, int fd);
 int			ft_isspace(char c);
 
-// char		*ft_strchr(const char *s, int c);
+char		*ft_strchr(const char *s, int c);
 
-// int			ft_open(char *fname, int oflag, int mode);
-// int			ft_close(int fd);
-// void		ft_dup2(int fd1, int fd2);
-// void		ft_pipe(int *fds);
-// pid_t		ft_fork(void);
+int			ft_open(char *fname, int oflag, int mode);
+int			ft_close(int fd);
+void		ft_dup2(int fd1, int fd2);
+void		ft_pipe(int *fds);
+pid_t		ft_fork(void);
 void		*ft_malloc(size_t size, size_t n);
-// int			ft_write(int fd, const void *buf, size_t byte);
-// void		ft_execve(const char *file, char *const *argv, char *const *envp);
-// char		*ft_getcwd(char *buf, size_t size);
+int			ft_write(int fd, const void *buf, size_t byte);
+void		ft_execve(const char *file, char *const *argv, char *const *envp);
+char		*ft_getcwd(char *buf, size_t size);
 
 int			is_exist_file(char *tmp_file_name);
 void		exit_errno(char *str1, char *str2, int exit_code);
@@ -140,11 +140,11 @@ char	*ft_getenv(t_env_info *info_env, char *key);
 
 void	execute(t_cmd_info *cmd, t_env_info *info_env);
 
-// static char	**get_envp(t_env_info *head);
-// static int	os_builtins(t_cmd_info *cmd, t_env_info *info_env);
-// static int	execute_cmd(t_cmd_info *cmd, t_env_info *info_env);
-// static void	do_fork_cmd(t_cmd_info *cmd, t_env_info *info_env);
-// static void	do_cmd(t_cmd_info *cmd, t_env_info *info_env);
+static char	**get_envp(t_env_info *head);
+static int	os_builtins(t_cmd_info *cmd, t_env_info *info_env);
+static int	execute_cmd(t_cmd_info *cmd, t_env_info *info_env);
+static void	do_fork_cmd(t_cmd_info *cmd, t_env_info *info_env);
+static void	do_cmd(t_cmd_info *cmd, t_env_info *info_env);
 
 void	executor(t_cmd_info *cmd, t_env_info *info_env);
 void	redirect(t_cmd_info *cmd);
@@ -165,6 +165,11 @@ void	delete_tmp_file(void);
 int		init_heredoc(t_cmd_info *cmd);
 void	clear_cmd(t_cmd_info *cmd);
 
+int	ft_open(char *fname, int oflag, int mode);
+int	ft_close(int fd);
+void	ft_dup2(int fd1, int fd2);
+void	ft_pipe(int *fds);
+pid_t	ft_fork(void);
 
 #endif
 

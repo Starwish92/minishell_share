@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shane <shane@student.42.fr>                +#+  +:+       +#+         #
+#    By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 13:03:55 by youngjpa          #+#    #+#              #
-#    Updated: 2023/04/11 20:07:38 by shane            ###   ########.fr        #
+#    Updated: 2023/04/12 15:32:12 by yuhyeongmin      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,17 @@ SRCS		=	minishell.c				 \
 				./utilites/utils5.c \
 				./env/env_utils.c	\
 				./env/env_utils2.c	\
-				# ./execute/execute.c	\
-				
+				./execute/execute.c	\
+				./execute/check_valid_syntex.c\
+				./execute/close_unused_fd.c\
+				./execute/execute_utils.c\
+				./execute/heredoc.c\
+				./execute/init_and_clear_cmd.c\
+				./execute/io_file_open.c\
+				./execute/path.c\
+				./execute/redirection.c\
+				./execute/tmp_file.c\
+				./execute/wait_child.c\
 
 OBJS		= $(SRCS:%.c=%.o)
 

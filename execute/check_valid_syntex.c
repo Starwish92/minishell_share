@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_syntex.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngjpa <youngjpa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 13:57:32 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/12 14:28:53 by youngjpa         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:19:45 by yuhyeongmin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	check_alone_pipe(t_cmd_info *cmd)
 {
 	if (cmd->ft_pipe_flag && cmd->ac == 0)
 	{
-		print_err("syntax error near unexpected token `|'");
+		print_err1("syntax error near unexpected token `|'");
 		g_exit_signal_code = 258;
 		return (-1);
 	}
@@ -42,7 +42,7 @@ static int	check_redirection_file(t_cmd_info *cmd, int i, int ret)
 				ret = -1;
 		if (ret == -1)
 		{
-			print_err("syntax error near unexpected token `newline'");
+			print_err1("syntax error near unexpected token `newline'");
 			g_exit_signal_code = 258;
 			return (-1);
 		}
