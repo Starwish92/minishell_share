@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shane <shane@student.42.fr>                +#+  +:+       +#+        */
+/*   By: youngjpa <youngjpa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:07:34 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/11 16:55:35 by shane            ###   ########.fr       */
+/*   Updated: 2023/04/12 14:41:58 by youngjpa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE	4096
 # endif
+
+# define READ 0
+# define WRITE 1
 
 # define SHE 0
 # define DFL 1
@@ -62,7 +65,7 @@ void		print_checker(t_cmd_info *cmd, t_env_info *env);
 void		*ft_free(void *ptr);
 t_cmd_info	*ft_cmd_init(void);
 void		ft_free_list(t_cmd_info *cmd);
-t_env_info	*compare_env_key(t_env_info *env_head, char *key);
+t_env_info	*compare_env_key(t_env_info *info_env, char *key);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);
@@ -129,19 +132,38 @@ void		ft_tokenize(t_cmd_info *cmd, t_env_info *head);
 
 int			ft_env_init(t_env_info *cur, char **envp);
 t_env_info	*new_env(char *key_value);
-t_env_info	*compare_env_key(t_env_info *env_head, char *key);
+t_env_info	*compare_env_key(t_env_info *info_env, char *key);
 char		*get_env_value(char *key_value);
 char		*get_env_key(char *key_value);
 
-char	*ft_getenv(t_env_info *env_head, char *key);
+char	*ft_getenv(t_env_info *info_env, char *key);
 
-void	execute(t_cmd_info *cmd_head, t_env_info *env_head);
+void	execute(t_cmd_info *cmd, t_env_info *info_env);
 
 // static char	**get_envp(t_env_info *head);
-// static int	os_builtins(t_cmd_info *cmd, t_env_info *env_head);
-// static int	execute_cmd(t_cmd_info *cmd, t_env_info *env_head);
-// static void	do_fork_cmd(t_cmd_info *cmd, t_env_info *env_head);
-// static void	do_cmd(t_cmd_info *cmd, t_env_info *env_head);
+// static int	os_builtins(t_cmd_info *cmd, t_env_info *info_env);
+// static int	execute_cmd(t_cmd_info *cmd, t_env_info *info_env);
+// static void	do_fork_cmd(t_cmd_info *cmd, t_env_info *info_env);
+// static void	do_cmd(t_cmd_info *cmd, t_env_info *info_env);
+
+void	executor(t_cmd_info *cmd, t_env_info *info_env);
+void	redirect(t_cmd_info *cmd);
+int		heredoc(t_cmd_info *cmd);
+void	close_unused_fd(t_cmd_info *cmd, pid_t pid);
+int		check_valid_syntax(t_cmd_info *cmd);
+void	wait_child(void);
+int		is_need_fork(t_cmd_info *cmd);
+void	restore_redirection_char(t_cmd_info *cmd);
+
+char	*get_cmd_path(t_cmd_info *cmd, t_env_info *info_env);
+
+int		io_file_open(t_cmd_info *cmd, t_env_info *info_env);
+void	trim_cmd_argv(t_cmd_info *cmd, const char *set, int direction);
+
+char	*get_tmp_file_name(void);
+void	delete_tmp_file(void);
+int		init_heredoc(t_cmd_info *cmd);
+void	clear_cmd(t_cmd_info *cmd);
 
 
 #endif

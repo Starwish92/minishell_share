@@ -1,5 +1,14 @@
-
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_valid_syntex.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: youngjpa <youngjpa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/12 13:57:32 by youngjpa          #+#    #+#             */
+/*   Updated: 2023/04/12 14:28:53 by youngjpa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../minishell.h"
 
@@ -54,14 +63,14 @@ static int	check_empty_cmd(t_cmd_info *cmd)
 	return (0);
 }
 
-int	check_valid_syntax(t_cmd_info *cmd_head)
+int	check_valid_syntax(t_cmd_info *cmd)
 {
 	t_cmd_info	*cur;
 
-	cur = cmd_head;
-	if (cur->ac == 0)
+	cur = cmd;
+	if (check_alone_pipe(cmd) == -1)
 		return (-1);
-	if (check_alone_pipe(cmd_head) == -1)
+	if (cur->ac == 0)
 		return (-1);
 	while (cur)
 	{
