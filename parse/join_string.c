@@ -6,7 +6,7 @@
 /*   By: shane <shane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:50:43 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/11 20:07:03 by shane            ###   ########.fr       */
+/*   Updated: 2023/04/11 20:42:10 by shane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ char	*ft_join_ascii(char *s1, char s2)
 	{
 		if (!s2)
 			return (0);
-		s1 = (char *)malloc(sizeof(char) * 2);
-		s1[0] = s2;
-		s1[1] = '\0';
-		return s1;
+		ret = (char *)malloc(sizeof(char) * 2);
+		ret[0] = s2;
+		ret[1] = '\0';
 	}
 	else
 	{
@@ -33,7 +32,7 @@ char	*ft_join_ascii(char *s1, char s2)
 			return (0);
 		ft_strlcpy(ret, s1, s1_len + 1);
 		ret[s1_len] = s2;
-		ret[s1_len+1] = '\0';
+		ret[s1_len + 1] = '\0';
 		free(s1);
 	}
 	return (ret);
