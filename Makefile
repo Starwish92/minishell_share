@@ -6,7 +6,7 @@
 #    By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 13:03:55 by youngjpa          #+#    #+#              #
-#    Updated: 2023/04/12 15:32:12 by yuhyeongmin      ###   ########.fr        #
+#    Updated: 2023/04/13 15:07:03 by yuhyeongmin      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,14 @@ SRCS		=	minishell.c				 \
 				./execute/redirection.c\
 				./execute/tmp_file.c\
 				./execute/wait_child.c\
+				./builtins/builtins_utils.c\
+				./builtins/cd.c\
+				./builtins/echo.c\
+				./builtins/env.c\
+				./builtins/exit.c\
+				./builtins/export.c\
+				./builtins/pwd.c\
+				./builtins/unset.c\
 
 OBJS		= $(SRCS:%.c=%.o)
 
