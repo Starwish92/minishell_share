@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: shane <shane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:07:34 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/12 15:23:59 by yuhyeongmin      ###   ########.fr       */
+/*   Updated: 2023/04/13 14:44:06 by shane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <term.h>
 # include <signal.h>
 # include <sys/errno.h>
+# include <sys/_types.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 
@@ -58,7 +59,7 @@ typedef struct s_env_info
 	char				*env_val;
 	struct s_env_info	*next;
 	struct s_env_info	*prev;
-}	t_env_info; 
+}			t_env_info; 
 
 void		print_checker(t_cmd_info *cmd, t_env_info *env);
 
@@ -138,7 +139,6 @@ char		*get_env_key(char *key_value);
 
 char	*ft_getenv(t_env_info *info_env, char *key);
 
-void	execute(t_cmd_info *cmd, t_env_info *info_env);
 
 static char	**get_envp(t_env_info *head);
 static int	os_builtins(t_cmd_info *cmd, t_env_info *info_env);
@@ -146,7 +146,7 @@ static int	execute_cmd(t_cmd_info *cmd, t_env_info *info_env);
 static void	do_fork_cmd(t_cmd_info *cmd, t_env_info *info_env);
 static void	do_cmd(t_cmd_info *cmd, t_env_info *info_env);
 
-void	executor(t_cmd_info *cmd, t_env_info *info_env);
+void	execute(t_cmd_info *cmd, t_env_info *info_env);
 void	redirect(t_cmd_info *cmd);
 int		heredoc(t_cmd_info *cmd);
 void	close_unused_fd(t_cmd_info *cmd, pid_t pid);
