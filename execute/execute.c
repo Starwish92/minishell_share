@@ -6,7 +6,7 @@
 /*   By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 13:57:50 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/12 15:36:42 by yuhyeongmin      ###   ########.fr       */
+/*   Updated: 2023/04/13 15:11:24 by yuhyeongmin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,21 +71,21 @@ static int	os_builtins(t_cmd_info *cmd, t_env_info *info_env)
 static int	execute_cmd(t_cmd_info *cmd, t_env_info *info_env)
 {
 	restore_redirection_char(cmd);
-	// if (!ft_strcmp(cmd->cmd_and_av[0], "echo"))
-	// 	return (ft_echo(cmd->ac, cmd->cmd_and_av));
-	// if (!ft_strcmp(cmd->cmd_and_av[0], "cd"))
-	// 	return (ft_cd(cmd->cmd_and_av[1], info_env));
-	// if (!ft_strcmp(cmd->cmd_and_av[0], "pwd"))
-	// 	return (ft_pwd());
-	// if (!ft_strcmp(cmd->cmd_and_av[0], "export"))
-	// 	return (ft_export(cmd->ac, cmd->cmd_and_av, info_env));
-	// if (!ft_strcmp(cmd->cmd_and_av[0], "unset"))
-	// 	return (ft_unset(cmd->ac, cmd->cmd_and_av, info_env));
-	// if (!ft_strcmp(cmd->cmd_and_av[0], "env"))
-	// 	return (ft_env(info_env));
-	// if (!ft_strcmp(cmd->cmd_and_av[0], "exit"))
-	// 	return (ft_exit(cmd));
-	// return (os_builtins(cmd, info_env));
+	if (!ft_strcmp(cmd->cmd_and_av[0], "echo"))
+		return (echo(cmd, info_env));
+	if (!ft_strcmp(cmd->cmd_and_av[0], "cd"))
+		return (cd(cmd, info_env));
+	if (!ft_strcmp(cmd->cmd_and_av[0], "pwd"))
+		return (pwd(cmd, info_env));
+	if (!ft_strcmp(cmd->cmd_and_av[0], "export"))
+		return (export(cmd, info_env));
+	if (!ft_strcmp(cmd->cmd_and_av[0], "unset"))
+		return (unset(cmd, info_env));
+	if (!ft_strcmp(cmd->cmd_and_av[0], "env"))
+		return (env(cmd, info_env));
+	if (!ft_strcmp(cmd->cmd_and_av[0], "exit"))
+		return (mini_exit(cmd));
+	return (os_builtins(cmd, info_env));
 	return 0;
 }
 
