@@ -2,7 +2,7 @@
 
 #include "../minishell.h"
 
-int	mini_export(t_cmd_info *cmd, t_info_env *env)
+int	mini_export(t_cmd_info *cmd, t_env_info *env)
 {
 	int	i;
 
@@ -20,7 +20,7 @@ int	mini_export(t_cmd_info *cmd, t_info_env *env)
 
 	// '='기준으로 identifier와 value로 분류
 	
-	// t_info_env 구조체 생성
+	// t_env_info 구조체 생성
 	// key(identifier)와 value값 assign
 	// env list에 add
 

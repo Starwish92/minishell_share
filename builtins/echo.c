@@ -2,7 +2,7 @@
 
 #include "../minishell.h"
 
-int	mini_echo(t_cmd_info *cmd, t_info_env *env)
+int	mini_echo(t_cmd_info *cmd, t_env_info *env)
 {
 	int	i;
 
