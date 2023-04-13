@@ -6,7 +6,7 @@
 /*   By: shane <shane@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 13:07:34 by youngjpa          #+#    #+#             */
-/*   Updated: 2023/04/13 15:10:29 by shane            ###   ########.fr       */
+/*   Updated: 2023/04/13 16:20:38 by shane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ static int	dollar_check(char c);
 static char	*ft_tokenize_while(t_cmd_info *cmd, t_env_info *head, int i);
 void		ft_tokenize(t_cmd_info *cmd, t_env_info *head);
 
-int			ft_env_init(t_env_info *cur, char **envp);
+int			ft_env_init(t_env_info *info_env, char **envp);
 t_env_info	*new_env(char *key_value);
 t_env_info	*compare_env_key(t_env_info *info_env, char *key);
 char		*get_env_value(char *key_value);
@@ -165,8 +165,8 @@ void	delete_tmp_file(void);
 int		init_heredoc(t_cmd_info *cmd);
 void	clear_cmd(t_cmd_info *cmd);
 
-int	ft_open(char *fname, int oflag, int mode);
-int	ft_close(int fd);
+int		ft_open(char *fname, int oflag, int mode);
+int		ft_close(int fd);
 void	ft_dup2(int fd1, int fd2);
 void	ft_pipe(int *fds);
 pid_t	ft_fork(void);
