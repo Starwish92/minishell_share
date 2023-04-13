@@ -6,7 +6,7 @@
 #    By: yuhyeongmin <yuhyeongmin@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 13:03:55 by youngjpa          #+#    #+#              #
-#    Updated: 2023/04/13 15:07:03 by yuhyeongmin      ###   ########.fr        #
+#    Updated: 2023/04/13 15:08:01 by yuhyeongmin      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,6 @@ SRCS		=	minishell.c				 \
 				./builtins/echo.c\
 				./builtins/env.c\
 				./builtins/exit.c\
-				./builtins/export.c\
 				./builtins/pwd.c\
 				./builtins/unset.c\
 
